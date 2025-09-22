@@ -24,7 +24,7 @@ interface VehicleFiltersProps {
 export function VehicleFilters({ filters, onFiltersChange, makes }: VehicleFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const handleFilterChange = (key: keyof FilterOptions, value: any) => {
+  const handleFilterChange = (key: keyof FilterOptions, value: string | number | [number, number]) => {
     onFiltersChange({
       ...filters,
       [key]: value
