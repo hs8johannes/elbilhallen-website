@@ -29,13 +29,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const combinedClassName = cn(baseStyles, variants[variant], sizes[size], className)
 
-    if (asChild && React.isValidElement(children)) {
-      const childProps = children.props || {}
-      const { className: childClassName, ...restChildProps } = childProps as { className?: string; [key: string]: unknown }
-      return React.cloneElement(children, {
-        className: cn(combinedClassName, childClassName),
-        ...restChildProps,
-        ...props
+    if (asChild) {
+      // Simple approach: just apply styles to child without cloneElement
+      const child = React.Children.only(children) as React.ReactElement
+      return React.cloneElement(child, {
+        className: cn(combinedClassName, child.props.className)
       })
     }
 
