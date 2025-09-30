@@ -6,11 +6,12 @@ import { cn } from "@/lib/utils"
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost"
   size?: "sm" | "md" | "lg"
+  asChild?: boolean
   children: React.ReactNode
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
+  ({ className, variant = "primary", size = "md", asChild = false, children, ...props }, ref) => {
     const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
 
     const variants = {
@@ -26,9 +27,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       lg: "h-12 px-6 text-lg"
     }
 
+    const combinedClassName = cn(baseStyles, variants[variant], sizes[size], className)
+
+    if (asChild) {
+      return React.cloneElement(children as React.ReactElement, {
+        className: cn(combinedClassName, (children as React.ReactElement).props?.className),
+        ...props
+      })
+    }
+
     return (
       <button
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
+        className={combinedClassName}
         ref={ref}
         {...props}
       >
