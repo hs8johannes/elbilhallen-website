@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Truck, ArrowUpDown, Shield, CreditCard, Calculator, Phone, ArrowRight } from "lucide-react"
+import { Truck, ArrowUpDown, Shield, CreditCard, Phone, ArrowRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
