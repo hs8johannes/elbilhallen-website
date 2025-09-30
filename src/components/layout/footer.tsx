@@ -75,8 +75,8 @@ export function Footer() {
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  Hovebakken 33<br />
-                  4306 Sandnes
+                  Luramyrveien 21<br />
+                  4313 Sandnes
                 </span>
               </li>
               <li className="flex items-center space-x-2">
