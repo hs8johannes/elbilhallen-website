@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight, Zap, Shield, Truck } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/ui/button-link"
 
 export function HeroSection() {
   return (
@@ -28,17 +28,13 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <Button size="lg" asChild>
-                <Link href="/biler">
-                  Se våre biler
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/kontakt">
-                  Kontakt oss
-                </Link>
-              </Button>
+              <ButtonLink size="lg" href="/biler">
+                Se våre biler
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </ButtonLink>
+              <ButtonLink variant="outline" size="lg" href="/kontakt">
+                Kontakt oss
+              </ButtonLink>
             </div>
 
             {/* Features */}

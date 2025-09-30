@@ -1,26 +1,23 @@
 "use client"
 
-import * as React from "react"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 
-interface ButtonProps {
+interface ButtonLinkProps {
+  href: string
   variant?: "primary" | "secondary" | "outline" | "ghost"
   size?: "sm" | "md" | "lg"
-  asChild?: boolean
   children: React.ReactNode
   className?: string
-  onClick?: () => void
 }
 
-export function Button({
-  className,
+export function ButtonLink({
+  href,
   variant = "primary",
   size = "md",
-  asChild = false,
   children,
-  onClick,
-  ...props
-}: ButtonProps) {
+  className
+}: ButtonLinkProps) {
   const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
 
   const variants = {
@@ -38,18 +35,9 @@ export function Button({
 
   const buttonClassName = cn(baseStyles, variants[variant], sizes[size], className)
 
-  if (asChild) {
-    // For asChild, we'll just render the children and let the parent handle styling
-    return <>{children}</>
-  }
-
   return (
-    <button
-      className={buttonClassName}
-      onClick={onClick}
-      {...props}
-    >
+    <Link href={href} className={buttonClassName}>
       {children}
-    </button>
+    </Link>
   )
 }
