@@ -10,6 +10,8 @@ interface ButtonProps {
   children: React.ReactNode
   className?: string
   onClick?: () => void
+  type?: "button" | "submit" | "reset"
+  disabled?: boolean
 }
 
 export function Button({
@@ -19,6 +21,8 @@ export function Button({
   asChild = false,
   children,
   onClick,
+  type = "button",
+  disabled = false,
   ...props
 }: ButtonProps) {
   const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
@@ -47,6 +51,8 @@ export function Button({
     <button
       className={buttonClassName}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
       {...props}
     >
       {children}

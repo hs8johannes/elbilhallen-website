@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
 import { ArrowRight, Zap, Shield, Truck } from "lucide-react"
 import { ButtonLink } from "@/components/ui/button-link"
 
